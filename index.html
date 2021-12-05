@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- displays site properly based on user's device -->
+
+		<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+		<link rel="stylesheet" href="./css/main.css" />
+
+		<title>Shortly</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="header contained">
+				<a class="logo__container" href="#">
+					<img class="logo__image" src="./images/logo.svg" alt="" />
+				</a>
+				<nav class="header__nav" id="header__nav">
+					<a href="#">Features</a>
+					<a href="#">Pricing</a>
+					<a href="#">Resources</a>
+					<div class="account-nav">
+						<a href="#" class="">Login</a>
+						<a href="#" class="btn btn-small">Sign Up</a>
+					</div>
+				</nav>
+				<label for="hamburger__checkbox" class="hamburger">
+					<input
+						type="checkbox"
+						name="hamburger__checkbox"
+						id="hamburger-cb"
+						class="hamburger__checkbox"
+					/>
+					<img src="./images/icon-hamburger.svg" alt="" class="hamburger__icon" />
+				</label>
+			</header>
+
+			<section class="hero contained">
+				<div class="hero__text-container">
+					<h1 class="heading--primary">More than just shorter links</h1>
+					<p class="paragraph--primary">
+						Build your brand’s recognition and get detailed insights on how your links
+						are performing.
+					</p>
+					<a href="#" class="btn">Get Started</a>
+				</div>
+
+				<img src="./images/illustration-working.svg" alt="" class="hero__image" />
+			</section>
+
+			<main>
+				<section class="shortener">
+					<form id="shortener__form" class="shortener__form">
+						<input
+							required
+							autocomplete="off"
+							type="url"
+							name="shortener__input"
+							id="shortener__input"
+							placeholder="Shorten a link here..."
+							class="shortener__input"
+						/>
+						<div
+							id="shortener__error-message-container"
+							class="shortener__error-message-container"
+						>
+							<p class="shortener__error-message">Please add a link (https://...)</p>
+						</div>
+						<div class="spinner-container">
+							<div class="spinner" id="spinner"></div>
+						</div>
+						<button class="btn btn-square-ish">Shorten It!</button>
+					</form>
+
+					<div id="shortener__items" class="shortener__items"></div>
+				</section>
+
+				<section class="section-statistics contained">
+					<div class="text-wrapper">
+						<h2 class="heading--secondary">Advanced Statistics</h2>
+						<p class="paragraph--secondary">
+							Track how your links are performing across the web with our advanced
+							statistics dashboard.
+						</p>
+					</div>
+					<div class="card-show">
+						<div class="card">
+							<div class="card__icon-wrapper">
+								<img
+									src="./images/icon-brand-recognition.svg"
+									alt=""
+									class="card__icon-img"
+								/>
+							</div>
+							<h3 class="heading--tertiary">Brand Recognition</h3>
+							<p class="paragraph--tertiary">
+								Boost your brand recognition with each click. Generic links don’t
+								mean a thing. Branded links help instil confidence in your content.
+							</p>
+						</div>
+						<div class="card">
+							<div class="card__icon-wrapper">
+								<img
+									src="./images/icon-detailed-records.svg"
+									alt=""
+									class="card__icon-img"
+								/>
+							</div>
+							<h3 class="heading--tertiary">Detailed Records</h3>
+							<p class="paragraph--tertiary">
+								Gain insights into who is clicking your links. Knowing when and
+								where people engage with your content helps inform better decisions.
+							</p>
+						</div>
+						<div class="card">
+							<div class="card__icon-wrapper">
+								<img
+									src="./images/icon-fully-customizable.svg"
+									alt=""
+									class="card__icon-img"
+								/>
+							</div>
+							<h3 class="heading--tertiary">Fully Customizable</h3>
+							<p class="paragraph--tertiary">
+								Improve brand awareness and content discoverability through
+								customizable links, supercharging audience engagement.
+							</p>
+						</div>
+					</div>
+				</section>
+				<section class="section-boost">
+					<h2 class="heading--secondary">Boost your links today</h2>
+					<a href="#" class="btn">Get Started</a>
+				</section>
+			</main>
+
+			<footer class="main-footer">
+				<ul class="main-footer__nav">
+					<li class="main-footer__nav-column">
+						<a class="logo__container" href="#">
+							<img class="logo__image filter-white" src="./images/logo.svg" alt="" />
+						</a>
+					</li>
+
+					<li class="main-footer__nav-column">
+						<h2 class="main-footer__nav-column-header">Features</h2>
+						<ul class="main-footer__nav-column-items">
+							<li class="main-footer__nav-column-item">
+								<a href="#">Link Shortening</a>
+							</li>
+							<li class="main-footer__nav-column-item">
+								<a href="#">Branded Links</a>
+							</li>
+							<li class="main-footer__nav-column-item">
+								<a href="#">Analytics</a>
+							</li>
+						</ul>
+					</li>
+					<li class="main-footer__nav-column">
+						<h2 class="main-footer__nav-column-header">Resources</h2>
+						<ul class="main-footer__nav-column-items">
+							<li class="main-footer__nav-column-item"><a href="#">Blog</a></li>
+							<li class="main-footer__nav-column-item"><a href="#">Developers</a></li>
+							<li class="main-footer__nav-column-item"><a href="#">Support</a></li>
+						</ul>
+					</li>
+					<li class="main-footer__nav-column">
+						<h2 class="main-footer__nav-column-header">Company</h2>
+						<ul class="main-footer__nav-column-items">
+							<li class="main-footer__nav-column-item"><a href="#">About</a></li>
+							<li class="main-footer__nav-column-item"><a href="#">Our Team</a></li>
+							<li class="main-footer__nav-column-item"><a href="#">Careers</a></li>
+							<li class="main-footer__nav-column-item"><a href="#">Contact</a></li>
+						</ul>
+					</li>
+					<li class="main-footer__nav-column">
+						<a href="#"><img src="./images/icon-facebook.svg" alt="" /></a>
+						<a href="#"><img src="./images/icon-twitter.svg" alt="" /></a>
+						<a href="#"><img src="./images/icon-pinterest.svg" alt="" /></a>
+						<a href="#"><img src="./images/icon-instagram.svg" alt="" /></a>
+					</li>
+				</ul>
+			</footer>
+		</div>
+		<script src="./script.js"></script>
+	</body>
+</html>

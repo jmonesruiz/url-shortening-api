@@ -1,0 +1,230 @@
+.contained {
+	max-width: 120rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: left;
+	padding: 5rem var(--side-padding);
+	position: relative;
+
+	@media only screen and (max-width: $ultra-small-phone-mq) {
+		padding-top: 3rem;
+	}
+
+	&__nav {
+		display: flex;
+		flex-grow: 1;
+		align-items: center;
+		justify-content: left;
+		margin-left: 1rem;
+
+		@media only screen and (max-width: $big-phone-mq) {
+			display: none;
+			position: absolute;
+			z-index: 1;
+			top: 12rem;
+			left: 50%;
+			margin-left: 0;
+			transform: translateX(-50%);
+			width: calc(100% - 10rem);
+			background-color: $primary-color-dark;
+			border-radius: 1.5rem;
+			flex-direction: column;
+			padding: 5rem 3.6rem;
+
+			& > a {
+				color: white;
+				font-size: 2.4rem;
+				margin-bottom: 4rem;
+			}
+		}
+
+		& > *:not(:last-child) {
+			margin-left: 3rem;
+			@media only screen and (max-width: $big-phone-mq) {
+				margin-left: 0rem;
+			}
+		}
+	}
+}
+
+.hero {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 2rem;
+	align-items: center;
+	padding: 8rem var(--side-padding) 11rem;
+
+	@media only screen and (max-width: $tablet-mq) {
+		grid-template-columns: 1fr;
+		padding: 8rem var(--side-padding) 9rem;
+	}
+
+	@media only screen and (max-width: $phone-mq) {
+		padding: 0rem var(--side-padding) 9rem;
+		grid-template-rows: 39.5rem 1fr;
+		position: relative;
+		gap: 4rem;
+	}
+
+	&__text-container {
+		max-width: 62rem;
+		@media only screen and (max-width: $tablet-mq) {
+			max-width: 64rem;
+			margin: 0 auto 4rem;
+			text-align: center;
+			& > *:first-child {
+				margin-bottom: 3rem;
+			}
+		}
+		@media only screen and (max-width: $phone-mq) {
+			max-width: 100%;
+			grid-row: 2 / span 1;
+		}
+	}
+
+	&__image {
+		width: 170%;
+
+		@media only screen and (max-width: $tablet-mq) {
+			width: 60%;
+			margin: 0 auto;
+			transform: translateX(5rem);
+		}
+
+		@media only screen and (max-width: $big-phone-mq) {
+			width: 70%;
+		}
+
+		@media only screen and (max-width: $phone-mq) {
+			position: absolute;
+			z-index: -1;
+			top: 0rem;
+			width: 60rem;
+			left: var(--side-padding);
+			transform: none;
+		}
+	}
+}
+
+.section-statistics {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 10rem var(--side-padding);
+	@media only screen and (max-width: $tablet-mq) {
+		& .heading--secondary {
+			margin-bottom: 2rem;
+		}
+	}
+}
+.section-boost {
+	text-align: center;
+	padding: 5.8rem 0;
+	color: white;
+	background-color: $primary-color-dark;
+	background-image: url("../images/bg-boost-desktop.svg");
+	background-size: cover;
+	& > *:first-child {
+		margin-bottom: 2.4rem;
+	}
+}
+
+.main-footer {
+	background: $darker-color;
+	padding: 5rem 0;
+	&__nav {
+		display: grid;
+		max-width: 120rem;
+		padding: 5rem var(--side-padding);
+		margin: 0 auto;
+		grid-template-columns: 1.8fr repeat(4, 1fr);
+
+		@media only screen and (max-width: $tablet-mq) {
+			grid-template-columns: 1.4fr repeat(4, 1fr);
+		}
+
+		@media only screen and (max-width: $big-phone-mq) {
+			padding: 3rem 0;
+			grid-template-columns: 1fr;
+			gap: 5rem;
+		}
+	}
+
+	&__nav-column {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: left;
+
+		@media only screen and (max-width: $big-phone-mq) {
+			align-items: center;
+
+			&-items {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+
+		&-header {
+			color: white;
+			margin-bottom: 2rem;
+			@media only screen and (max-width: $big-phone-mq) {
+				font-size: 2rem;
+			}
+		}
+
+		&-item {
+			a {
+				font-weight: 500;
+				&:hover {
+					color: white;
+				}
+				@media only screen and (max-width: $big-phone-mq) {
+					font-size: 1.9rem;
+				}
+			}
+
+			&:not(:last-child) {
+				margin-bottom: 1rem;
+				@media only screen and (max-width: $big-phone-mq) {
+					margin-bottom: 1.2rem;
+				}
+			}
+		}
+
+		&:last-child {
+			flex-direction: row;
+			justify-content: space-around;
+
+			@media only screen and (max-width: $big-phone-mq) {
+				justify-content: center;
+				gap: 4rem;
+				margin-top: 1.5rem;
+			}
+
+			& > * {
+				align-items: center;
+				justify-content: center;
+				width: 2.4rem;
+				height: 2.4rem;
+
+				@media only screen and (max-width: $big-phone-mq) {
+					width: 3rem;
+				}
+
+				img {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
