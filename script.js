@@ -19,41 +19,6 @@ const shortenerItems = document.getElementById("shortener__items");
 const spinner = document.getElementById("spinner");
 const errorMessageContainer = document.getElementById("shortener__error-message-container");
 
-shortenerForm.addEventListener("submit", (e) => {
-	e.preventDefault();
-	if (!shortenerInput.checkValidity()) {
-		shortenerInput.focus();
-		shortenerInput.select();
-	} else {
-		spinner.style.setProperty("display", "unset");
-		fetch("https://api.shrtco.de/v2/shorten?url=" + shortenerInput.value)
-			.then((res) => res.json())
-			.then((res) => {
-				if (res.ok) {
-					let newItem = createItem(res.result.original_link, res.result.short_link);
-					shortenerInput.value = "";
-
-					shortenerItems.appendChild(newItem);
-					newItem.childNodes[2].focus();
-					newItem.childNodes[2].blur();
-				} else {
-					throw new Error(res.error);
-				}
-			})
-			.catch((error) => {
-				errorMessageContainer.classList.toggle("error-active");
-				errorMessageContainer.children[0].innerText = error;
-				setTimeout(() => {
-					errorMessageContainer.classList.toggle("error-active");
-					errorMessageContainer.children[0].innerText = "Please add a link (https://...)";
-				}, 2000);
-			})
-			.finally(() => {
-				spinner.style.removeProperty("display");
-			});
-	}
-});
-
 function createItem(original, shortened) {
 	let item = document.createElement("div");
 	item.classList.add("shortener__item");
@@ -75,3 +40,58 @@ function createItem(original, shortened) {
 	});
 	return item;
 }
+
+//// LOCAL STORAGE ////
+let shortenedHistory = localStorage.getItem("shortenedHistory");
+if (shortenedHistory) {
+	shortenedHistory = JSON.parse(shortenedHistory);
+	shortenedHistory.forEach((item) => {
+		shortenerItems.appendChild(createItem(item.original, item.shortened));
+	});
+} else {
+	shortenedHistory = [];
+}
+
+//// SHORTENER FORM ////
+shortenerForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+	if (!shortenerInput.checkValidity()) {
+		shortenerInput.focus();
+		shortenerInput.select();
+	} else {
+		spinner.style.setProperty("display", "unset");
+		fetch("https://api.shrtco.de/v2/shorten?url=" + shortenerInput.value)
+			.then((res) => res.json())
+			.then((res) => {
+				if (res.ok) {
+					let newItem = createItem(res.result.original_link, res.result.short_link);
+					shortenerInput.value = "";
+					if (shortenerItems.childNodes.length === 3) {
+						shortenedHistory.shift();
+						shortenerItems.removeChild(shortenerItems.firstChild);
+					}
+					shortenedHistory.push({
+						original: res.result.original_link,
+						shortened: res.result.short_link,
+					});
+					shortenerItems.appendChild(newItem);
+					localStorage.setItem("shortenedHistory", JSON.stringify(shortenedHistory));
+					newItem.childNodes[2].focus();
+					newItem.childNodes[2].blur();
+				} else {
+					throw new Error(res.error);
+				}
+			})
+			.catch((error) => {
+				errorMessageContainer.classList.toggle("error-active");
+				errorMessageContainer.children[0].innerText = error;
+				setTimeout(() => {
+					errorMessageContainer.classList.toggle("error-active");
+					errorMessageContainer.children[0].innerText = "Please add a link (https://...)";
+				}, 2000);
+			})
+			.finally(() => {
+				spinner.style.removeProperty("display");
+			});
+	}
+});
